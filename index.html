@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn Quran, Tajweed, Hifz and Islamic Studies one-to-one online with certified male and female teachers. Classes for kids and adults. Book a free trial class." />
+    <link rel="canonical" href="https://quraninternational.academy/" />
+
+    <!-- ===== Link previews (Facebook, WhatsApp, Messenger, LinkedIn, Telegram, X) =====
+         Image: /og/qit-share-banner-v3.jpg (1200 x 630, the featured photo).
+         Image URLs must be absolute. If you change the picture, give the file a
+         NEW name (…-v4.jpg) and update the lines below, so apps don't keep
+         showing their cached copy. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Quran International Institute" />
+    <meta property="og:url" content="https://quraninternational.academy/" />
+    <meta property="og:title" content="Quran International Institute | Online Quran Classes" />
+    <meta property="og:description" content="The Quran is guidance for mankind. Learn Quran reading, Tajweed, Hifz and Islamic Studies live and one-to-one with qualified tutors. Flexible times, kids, teens and adults welcome. Book a free trial class." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://quraninternational.academy/og/qit-share-banner-v3.jpg" />
+    <meta property="og:image:secure_url" content="https://quraninternational.academy/og/qit-share-banner-v3.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="QIT – Quranic light, guidance worldwide: 'The Quran is guidance for mankind' (Al-Baqarah 2:185), with a live online Quran class and a Quran on a wooden stand" />
+    <link rel="image_src" href="https://quraninternational.academy/og/qit-share-banner-v3.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Quran International Institute | Online Quran Classes" />
+    <meta name="twitter:description" content="Learn Quran reading, Tajweed, Hifz and Islamic Studies live and one-to-one with qualified tutors. Book a free trial class." />
+    <meta name="twitter:image" content="https://quraninternational.academy/og/qit-share-banner-v3.jpg" />
+    <meta name="twitter:image:alt" content="QIT – The Quran is guidance for mankind (Al-Baqarah 2:185)" />
+    <meta name="theme-color" content="#03474F" />
+    <meta name="qit-version" content="192" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-qit-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-qit-64.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-qit.png?v=132" />
+    <link rel="manifest" id="qit-manifest" href="/manifest.webmanifest" />
+    <script>
+      // "Add to Home Screen" / "Install app" opens where it was installed from:
+      // the admin panel, the Teacher Dashboard or the public website.
+      (function () {
+        var link = document.getElementById('qit-manifest');
+        function set() {
+          var p = location.pathname;
+          var area = p.indexOf('/admin') === 0 ? 'admin' : p.indexOf('/teacher') === 0 ? 'teacher' : '';
+          var href = area ? '/manifest-' + area + '.webmanifest' : '/manifest.webmanifest';
+          if (link.getAttribute('href') !== href) link.setAttribute('href', href);
+          var title = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+          if (title) title.setAttribute('content', area === 'admin' ? 'QIT Admin' : area === 'teacher' ? 'QIT Teacher' : 'QIT');
+        }
+        // v153: remember the last private area; a home-screen app that starts on the
+        // public page while signed in goes straight back to it (admin → dashboard).
+        function remember() {
+          var p = location.pathname;
+          try {
+            if (p.indexOf('/admin/login') !== 0 && p.indexOf('/admin') === 0) localStorage.setItem('qit:home-area', '/admin/portal');
+            else if (p.indexOf('/teacher') === 0 && p.indexOf('/teacher/login') !== 0) localStorage.setItem('qit:home-area', '/teacher');
+          } catch (e) {}
+        }
+        try {
+          var standalone = window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+          var first = !sessionStorage.getItem('qit:launched');
+          sessionStorage.setItem('qit:launched', '1');
+          var home = localStorage.getItem('qit:home-area');
+          if (standalone && first && home && location.pathname === '/' && !location.search && localStorage.getItem('qit-auth')) location.replace(home);
+        } catch (e) {}
+        var set0 = set; set = function () { set0(); remember(); };
+        set();
+        // v162: iPhone / iPad read the app details (name, start page) only when a page
+        // loads. Moving between the website, the admin panel and the Teacher Dashboard
+        // inside the page (e.g. after signing in) would keep the website's details, and
+        // "Add to Home Screen" would open the public website. So on iOS, crossing into
+        // another area loads that page fresh once.
+        var areaOf = function (p) { return p.indexOf('/admin') === 0 ? 'admin' : p.indexOf('/teacher') === 0 ? 'teacher' : ''; };
+        var loadArea = areaOf(location.pathname);
+        var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        ['pushState', 'replaceState'].forEach(function (k) {
+          var orig = history[k];
+          history[k] = function () {
+            var r = orig.apply(this, arguments);
+            try {
+              set();
+              var now = areaOf(location.pathname);
+              if (ios && now && now !== loadArea) { loadArea = now; setTimeout(function () { location.reload(); }, 0); }
+            } catch (e) {}
+            return r;
+          };
+        });
+        window.addEventListener('popstate', set);
+        document.addEventListener('DOMContentLoaded', set);
+      })();
+    </script>
+    <link rel="preconnect" href="https://jigbsunxutjgxxehjeuy.supabase.co" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- Vimeo poster images for the home page videos (the player itself loads only on click) -->
+    <link rel="preconnect" href="https://i.vimeocdn.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Web font loads without blocking the first paint (Windows uses Bahnschrift anyway) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" /></noscript>
+    <!-- First hero photo: start downloading it straight away -->
+    <link rel="preload" as="image" type="image/webp" href="/images/hero-qit-4.webp" imagesrcset="/images/hero-qit-4-sm.webp 640w, /images/hero-qit-4.webp 1200w" imagesizes="(min-width: 1024px) 560px, 92vw" fetchpriority="high" />
+    <meta name="application-name" content="Quran International Institute" />
+    <meta name="apple-mobile-web-app-title" content="Quran International Institute" />
+    <title>Quran International Institute | One-to-One Online Quran Classes</title>
+    <script>
+      // Apply the saved theme before the page paints (public pages only)
+      (function () {
+        try {
+          if (location.pathname.indexOf('/admin') === 0) return;
+          // Saved language: set <html lang> and start the Bengali font early,
+          // only where বাংলা is offered (same time zones as src/i18n/LanguageContext.jsx)
+          var bnZones = ['Asia/Dhaka','Asia/Kuala_Lumpur','Asia/Kuching','Asia/Singapore','Asia/Riyadh','Asia/Dubai','Asia/Muscat','Asia/Qatar','Asia/Kuwait','Asia/Bahrain','Asia/Amman','Asia/Beirut','Asia/Baghdad','Asia/Damascus','Asia/Aden','Asia/Gaza','Asia/Hebron','Asia/Jerusalem','Asia/Tel_Aviv','Africa/Cairo','Asia/Tehran','Europe/Istanbul','Asia/Istanbul'];
+          var tz = '';
+          try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
+          if (localStorage.getItem('qit:lang') === 'bn' && bnZones.indexOf(tz) !== -1) {
+            document.documentElement.lang = 'bn';
+            [['qit-bn-font', '/fonts/HindSiliguri-Regular.woff2'], ['qit-bn-font-bold', '/fonts/Aikya.woff2'], ['qit-bn-font-digits', '/fonts/NotoSansBengali-Variable.woff2']].forEach(function (x) {
+              var f = document.createElement('link');
+              f.id = x[0];
+              f.rel = 'preload';
+              f.as = 'font';
+              f.type = 'font/woff2';
+              f.crossOrigin = 'anonymous';
+              f.href = x[1];
+              document.head.appendChild(f);
+            });
+          }
+          var t = localStorage.getItem('qit:theme');
+          if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <!--
+      Netlify Forms: these hidden copies let Netlify detect the forms at deploy
+      time. The React forms post the same field names. Do not remove.
+    -->
+    <form name="trial-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="name" /><input name="country" /><input name="whatsapp" />
+      <input name="preferredTime" /><input name="classDate" /><input name="teacher" /><input name="medium" />
+      <input name="platform" /><input name="course" /><input name="submittedFrom" />
+    </form>
+    <form name="contact-message" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="name" /><input name="email" /><input name="whatsapp" />
+      <textarea name="message"></textarea><input name="submittedFrom" />
+    </form>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

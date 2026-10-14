@@ -1,0 +1,318 @@
+/* QIT Management Portal – styles ported from the Apps Script portal and
+   scoped to .qit-portal so they never leak into the rest of the site. */
+.qit-portal {
+  --c-teal-dark: #00373d;
+  --c-teal-mid: #004d51;
+  --c-box-bg: #e6f3f4;
+  --c-box-border: #b2d2d6;
+  --text-main: #00373d;
+  --text-muted: #4b6e72;
+  --danger: #dc2626;
+  --danger-bg: #fef2f2;
+  --shadow-floating: 0 14px 34px -4px rgba(0, 35, 38, 0.18), 0 6px 14px rgba(0, 35, 38, 0.1);
+  --shadow-hover: 0 22px 42px -6px rgba(0, 55, 61, 0.3), 0 10px 20px rgba(0, 55, 61, 0.14);
+  color: var(--text-main);
+  line-height: 1.45;
+  font-family: Bahnschrift, 'Barlow', 'Hind Siliguri', system-ui, sans-serif;
+}
+.qit-portal :is(input, select, textarea, button) { font-family: inherit; }
+.qit-portal .bn, .qit-dossier .bn { font-family: 'Hind Siliguri', Bahnschrift, 'Barlow', sans-serif; }
+
+/* Header + tabs */
+.qit-portal .p-header {
+  background: #fff; padding: 16px 22px; border-radius: 14px; display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 18px; box-shadow: var(--shadow-floating); border: 1.5px solid var(--c-box-border);
+}
+.qit-portal .logo-badge {
+  width: 52px; height: 52px; background: linear-gradient(135deg, var(--c-teal-dark), var(--c-teal-mid)); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; border-radius: 10px; flex-shrink: 0;
+  box-shadow: 0 6px 14px rgba(0, 55, 61, 0.35);
+}
+.qit-portal .main-nav {
+  display: flex; gap: 8px; background: #fff; border: 1.5px solid var(--c-box-border); padding: 6px; border-radius: 12px;
+  margin-bottom: 22px; box-shadow: var(--shadow-floating); overflow-x: auto;
+}
+.qit-portal .nav-btn {
+  flex: 1; background: transparent; border: none; padding: 11px 14px; font-size: 0.9rem; font-weight: 700; color: var(--text-muted);
+  border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap;
+  transition: all 0.12s ease;
+}
+.qit-portal .nav-btn.active { background: var(--c-teal-mid); color: #fff; box-shadow: 0 6px 16px rgba(0, 77, 81, 0.35); }
+.qit-portal .nav-btn:hover:not(.active) { background: var(--c-box-bg); color: var(--c-teal-dark); }
+
+/* Cards */
+.qit-portal .box-card {
+  background: #fff; border: 1.5px solid var(--c-box-border); border-radius: 14px; padding: 22px; box-shadow: var(--shadow-floating); margin-bottom: 22px;
+}
+.qit-portal .card-header-bar {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--c-box-border);
+}
+.qit-portal .card-title {
+  font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--c-teal-dark);
+  border-left: 4px solid var(--c-teal-mid); padding-left: 10px;
+}
+.qit-portal .tile { background: var(--c-box-bg); padding: 18px; border-radius: 12px; border: 1.5px solid var(--c-box-border); }
+.qit-portal .tile-label { font-size: 0.75rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); }
+.qit-portal .tile-value { font-size: 1.55rem; font-weight: 800; margin-top: 6px; white-space: nowrap; }
+
+/* Filters */
+.qit-portal .filter-cluster {
+  display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1.5px solid var(--c-box-border); padding: 5px 8px; border-radius: 10px;
+}
+.qit-portal .filter-label { font-size: 0.76rem; font-weight: 800; color: var(--c-teal-dark); text-transform: uppercase; padding: 0 6px; }
+.qit-portal .premium-select {
+  background: var(--c-box-bg); border: 1.5px solid var(--c-box-border); color: var(--c-teal-dark); font-size: 0.88rem; font-weight: 800;
+  padding: 7px 12px; border-radius: 8px; cursor: pointer;
+}
+.qit-portal .dir-tab {
+  background: #fff; border: 1.5px solid var(--c-box-border); padding: 8px 16px; font-size: 0.88rem; font-weight: 800; color: var(--text-muted);
+  cursor: pointer; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px;
+}
+.qit-portal .dir-tab .count { background: #ebf2f3; color: var(--text-muted); padding: 2px 8px; border-radius: 12px; font-size: 0.74rem; }
+.qit-portal .dir-tab.active { color: #fff; background: var(--c-teal-mid); border-color: var(--c-teal-mid); }
+.qit-portal .dir-tab.active .count { background: rgba(255, 255, 255, 0.25); color: #fff; }
+
+/* Inputs */
+.qit-portal .m-input, .qit-portal .m-select {
+  width: 100%; padding: 9px 12px; font-size: 0.9rem; border: 1.5px solid #8fb6ba; border-radius: 8px; background: #fff;
+  color: var(--c-teal-dark); font-weight: 700; outline: none; box-shadow: 0 2px 4px rgba(0, 35, 38, 0.04);
+}
+.qit-portal .m-select { border-color: var(--c-teal-mid); font-weight: 800; cursor: pointer; }
+.qit-portal .m-input:focus, .qit-portal .m-select:focus { border-color: var(--c-teal-mid); box-shadow: 0 0 0 3px rgba(0, 77, 81, 0.15); }
+.qit-portal .m-input:disabled, .qit-portal .m-select:disabled { opacity: 0.35; cursor: not-allowed; }
+.qit-portal .in-fee { border-color: #10b981 !important; color: #065f46 !important; font-weight: 800; }
+.qit-portal .in-cut { border-color: #f59e0b !important; color: #b45309 !important; font-weight: 800; }
+.qit-portal .form-group { margin-bottom: 12px; }
+.qit-portal .form-group > label, .qit-portal .p-label {
+  display: block; font-size: 0.74rem; text-transform: uppercase; font-weight: 700; color: var(--c-teal-dark); margin-bottom: 4px;
+}
+
+/* Buttons */
+.qit-portal .btn-teal {
+  padding: 10px 20px; background: var(--c-teal-dark); color: #fff; border: none; border-radius: 6px; font-size: 0.88rem; font-weight: 800;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+}
+.qit-portal .btn-teal:hover { background: var(--c-teal-mid); }
+.qit-portal .btn-teal:disabled { opacity: 0.6; cursor: not-allowed; }
+.qit-portal .btn-add-row {
+  background: var(--c-box-bg); border: 1.5px dashed var(--c-teal-mid); color: var(--c-teal-dark); padding: 9px 18px; border-radius: 6px;
+  font-size: 0.86rem; font-weight: 800; cursor: pointer;
+}
+.qit-portal .btn-del-row {
+  background: #fff; border: 1.5px solid var(--danger); color: var(--danger); font-weight: 800; width: 32px; height: 32px; border-radius: 6px; cursor: pointer;
+}
+.qit-portal .btn-outline-sm {
+  background: #fff; border: 1.5px solid var(--c-teal-dark); color: var(--c-teal-dark); padding: 5px 12px; font-size: 0.75rem; font-weight: 800;
+  border-radius: 5px; cursor: pointer;
+}
+.qit-portal .btn-icon-edit {
+  display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 8px; background: #fff;
+  border: 2px solid var(--c-teal-dark); color: var(--c-teal-dark); cursor: pointer; transition: all 0.15s ease;
+}
+.qit-portal .btn-icon-edit:hover { background: var(--c-teal-dark); color: #fff; transform: translateY(-2px); }
+.qit-portal .btn-danger { background: var(--danger-bg); border: 1px solid var(--danger); color: var(--danger); padding: 9px 16px; font-size: 0.82rem; font-weight: 700; border-radius: 6px; cursor: pointer; }
+.qit-portal .btn-muted { background: #f1f5f9; border: 1px solid #cbd5e1; color: #64748b; padding: 9px 16px; font-size: 0.82rem; font-weight: 700; border-radius: 6px; cursor: pointer; }
+.qit-portal .btn-pkg-toggle {
+  font-size: 0.72rem; font-weight: 800; padding: 5px 8px; border-radius: 6px; cursor: pointer; border: 1.5px solid #d97706; background: #fff; color: #b45309;
+}
+.qit-portal .btn-pkg-toggle.active { background: #d97706; color: #fff; }
+
+/* Tags */
+.qit-portal .id-tag { background: var(--c-teal-mid); color: #fff; padding: 3px 8px; font-size: 0.74rem; border-radius: 4px; font-weight: 800; }
+.qit-portal .fixed-tag { background: var(--c-teal-dark); color: #fff; padding: 4px 10px; border-radius: 5px; font-size: 0.75rem; font-weight: 800; }
+.qit-portal .per-student-tag { background: var(--c-box-bg); color: var(--c-teal-dark); border: 1px solid var(--c-box-border); padding: 4px 10px; border-radius: 5px; font-size: 0.75rem; font-weight: 700; }
+.qit-portal .pct-tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; border: 1.5px solid; }
+.qit-portal .pct-tag.low { background: #f1f5f9; color: #475569; border-color: #cbd5e1; }
+.qit-portal .pct-tag.med { background: #fffbeb; color: #b45309; border-color: #fde68a; }
+.qit-portal .pct-tag.high { background: #fef2f2; color: #991b1b; border-color: #fca5a5; }
+
+/* Tables */
+.qit-portal .table-wrap { overflow-x: auto; }
+.qit-portal .dynamic-table { width: 100%; min-width: 900px; border-collapse: separate; border-spacing: 0 10px; }
+.qit-portal .dynamic-table th {
+  background: var(--c-teal-dark); color: #fff; font-size: 0.74rem; text-transform: uppercase; font-weight: 800; padding: 11px 12px; text-align: left;
+}
+.qit-portal .dynamic-table th:first-child { border-radius: 8px 0 0 8px; }
+.qit-portal .dynamic-table th:last-child { border-radius: 0 8px 8px 0; }
+.qit-portal .dynamic-table td {
+  padding: 10px 10px; vertical-align: middle; background: var(--c-box-bg); border-top: 1.5px solid var(--c-box-border);
+  border-bottom: 1.5px solid var(--c-box-border); box-shadow: 0 6px 16px rgba(0, 35, 38, 0.08);
+}
+.qit-portal .dynamic-table td:first-child { border-left: 1.5px solid var(--c-box-border); border-radius: 12px 0 0 12px; }
+.qit-portal .dynamic-table td:last-child { border-right: 1.5px solid var(--c-box-border); border-radius: 0 12px 12px 0; }
+.qit-portal .salary-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; border: 1.5px solid var(--c-box-border); border-radius: 10px; overflow: hidden; }
+.qit-portal .salary-table th {
+  background: var(--c-box-bg); color: var(--c-teal-dark); font-size: 0.72rem; text-transform: uppercase; font-weight: 700; padding: 10px 14px;
+  border-bottom: 1.5px solid var(--c-box-border); text-align: left;
+}
+.qit-portal .salary-table td { padding: 10px 14px; border-bottom: 1px solid #ebf2f3; text-align: left; background: #fff; }
+
+/* Teacher summary cards */
+.qit-portal .teacher-card {
+  background: var(--c-box-bg); border: 1.5px solid var(--c-box-border); border-radius: 14px; margin-bottom: 18px; overflow: hidden;
+  box-shadow: var(--shadow-floating); cursor: pointer; transition: all 0.16s ease;
+}
+.qit-portal .teacher-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--c-teal-mid); }
+.qit-portal .teacher-card-top {
+  padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+  border-bottom: 1.5px solid rgba(178, 210, 214, 0.6);
+}
+.qit-portal .t-name { font-size: 1.2rem; font-weight: 800; color: var(--c-teal-dark); text-decoration: underline; }
+.qit-portal .teacher-strip {
+  background: rgba(255, 255, 255, 0.75); padding: 11px 24px; font-size: 0.84rem; color: var(--text-muted); font-weight: 600;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.qit-portal .metrics-bar { display: flex; gap: 36px; align-items: center; flex-wrap: wrap; }
+.qit-portal .metric-col { display: flex; flex-direction: column; text-align: right; min-width: 110px; }
+.qit-portal .metric-val { font-size: 1.2rem; font-weight: 800; white-space: nowrap; color: var(--c-teal-dark); }
+.qit-portal .metric-lbl, .qit-dossier .metric-lbl { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted, #4b6e72); margin-top: 3px; display: block; }
+
+/* Payout */
+.qit-portal .payout-bar {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; background: var(--c-box-bg);
+  border: 1.5px solid var(--c-box-border); border-radius: 10px; padding: 14px 18px;
+}
+.qit-portal .payout-bar input { padding: 8px 10px; border: 1.5px solid var(--c-box-border); border-radius: 6px; font-size: 0.86rem; font-weight: 700; color: var(--c-teal-dark); background: #fff; }
+
+/* Modals */
+.qit-portal-modal {
+  position: fixed; inset: 0; background: rgba(0, 35, 38, 0.7); backdrop-filter: blur(6px); display: flex; align-items: center;
+  justify-content: center; z-index: 70; padding: 16px;
+}
+.qit-portal-modal > .modal-card {
+  background: #fff; padding: 24px; border-radius: 14px; width: 100%; max-width: 520px; max-height: 92vh; overflow-y: auto;
+  border: 1.5px solid var(--c-box-border); box-shadow: 0 20px 48px rgba(0, 35, 38, 0.38);
+}
+.qit-portal-modal > .modal-card.wide { max-width: 1140px; }
+.qit-portal-modal > .modal-card.report { max-width: 940px; }
+
+/* WhatsApp importer */
+.qit-portal .import-box { background: linear-gradient(135deg, #f5fafa, #e6f3f4); border: 2px dashed var(--c-teal-mid); border-radius: 14px; padding: 18px 20px; margin-bottom: 22px; }
+.qit-portal .parsed-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; margin-top: 16px; }
+.qit-portal .parsed-card { background: #fff; border: 1.5px solid var(--c-box-border); border-radius: 12px; padding: 14px 16px; box-shadow: 0 6px 16px rgba(0, 35, 38, 0.08); }
+.qit-portal .parsed-card.matched { border-color: #86efac; }
+.qit-portal .parsed-card.unmatched { border-color: #fde68a; }
+.qit-portal .match-badge { font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+.qit-portal .match-badge.yes { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+.qit-portal .match-badge.no { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+.qit-portal .parsed-row { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; display: flex; gap: 6px; }
+.qit-portal .parsed-row b { color: var(--c-teal-dark); font-weight: 800; min-width: 78px; flex-shrink: 0; }
+
+/* Dashboard */
+.qit-portal .dash-stat { border-radius: 12px; padding: 18px; border: 1.5px solid; display: flex; flex-direction: column; gap: 8px; }
+.qit-portal .progress-track { width: 100%; height: 8px; background: rgba(0, 0, 0, 0.08); border-radius: 4px; overflow: hidden; }
+.qit-portal .progress-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+.qit-portal .chart-box { background: var(--c-box-bg); border: 1.5px solid var(--c-box-border); border-radius: 14px; padding: 18px; }
+.qit-portal .chart-title { font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--c-teal-dark); margin-bottom: 12px; }
+
+/* Responsive: let grid children shrink below their content width on phones */
+.qit-portal .chart-box, .qit-portal .tile, .qit-portal .dash-stat, .qit-portal .box-card { min-width: 0; }
+.qit-portal canvas { max-width: 100%; }
+@media (max-width: 640px) {
+  .qit-portal .box-card { padding: 16px; }
+  .qit-portal .p-header { padding: 14px 16px; }
+  .qit-portal .tile-value { font-size: 1.3rem; }
+  .qit-portal .teacher-card-top, .qit-portal .teacher-strip { padding-left: 16px; padding-right: 16px; }
+  .qit-portal .metrics-bar { gap: 16px; }
+  .qit-portal .metric-col { text-align: left; }
+  /* All tabs visible at once on phones: two per row instead of a hidden scroller */
+  .qit-portal .main-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; overflow: visible; }
+  .qit-portal .nav-btn { padding: 10px 6px; font-size: 0.82rem; white-space: normal; text-align: center; line-height: 1.2; min-height: 44px; }
+  .qit-portal .tile { padding: 14px; }
+  .qit-portal .tile-value { font-size: 1.2rem; white-space: normal; overflow-wrap: anywhere; }
+}
+
+/* ---------- Searchable dropdown (components/Combobox.jsx) ---------- */
+.qcb { position: relative; display: block; width: 100%; }
+.qcb > input {
+  width: 100%; padding: 11px 34px 11px 14px; border: 1.5px solid #004d51; border-radius: 8px; background: #fff;
+  font-size: 0.88rem; font-weight: 800; color: #00373d; outline: none; cursor: pointer; text-overflow: ellipsis;
+  box-shadow: 0 2px 4px rgba(0, 35, 38, 0.04); font-family: inherit;
+}
+.qcb > input:focus { cursor: text; box-shadow: 0 0 0 3px rgba(0, 77, 81, 0.15); }
+.qcb > input::placeholder { color: #4b6e72; font-weight: 600; opacity: 0.8; }
+.qcb.is-disabled { opacity: 0.35; }
+.qcb.is-disabled > input { cursor: not-allowed; }
+.qcb-chevron { position: absolute; right: 10px; top: 50%; width: 16px; height: 16px; transform: translateY(-50%); color: #004d51; pointer-events: none; }
+.qcb-pill { width: auto; flex: 0 0 auto; }
+.qcb-pill > input { width: 138px; }
+.qcb-pill.qcb-year > input { width: 90px; }
+.qcb-pill > input { background: #e6f3f4; border-color: #b2d2d6; padding: 7px 30px 7px 11px; border-radius: 8px; }
+.qcb-list {
+  position: fixed; z-index: 10000; margin: 0; padding: 5px; list-style: none; overflow-y: auto; background: #fff;
+  border: 1.5px solid #b2d2d6; border-radius: 10px; box-shadow: 0 14px 34px -10px rgba(0, 35, 38, 0.35);
+  font-family: 'Hind Siliguri', Bahnschrift, 'Barlow', system-ui, sans-serif;
+}
+.qcb-option { padding: 8px 11px; border-radius: 7px; font-size: 0.87rem; font-weight: 700; color: #00373d; cursor: pointer; line-height: 1.35; }
+.qcb-option.is-active { background: #e6f3f4; }
+.qcb-option.is-selected { color: #0f766e; }
+.qcb-option.is-selected::after { content: ' ✓'; }
+.qcb-group { padding: 8px 11px 4px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #4b6e72; }
+.qcb-empty { padding: 10px 11px; font-size: 0.85rem; color: #4b6e72; }
+.dynamic-table .qcb { min-width: 150px; }
+
+/* ---------- Salary Directory: search, department tag, edit icon ---------- */
+.qit-portal .dir-search { position: relative; display: flex; align-items: center; }
+.qit-portal .dir-search .m-input { padding-left: 42px; padding-right: 110px; }
+.qit-portal .dir-search-icon { position: absolute; left: 14px; width: 18px; height: 18px; color: var(--text-muted); pointer-events: none; }
+.qit-portal .dir-search-clear { position: absolute; right: 12px; display: flex; padding: 4px; border-radius: 6px; color: var(--text-muted); }
+.qit-portal .dir-search-clear:hover { background: var(--c-box-bg); color: var(--c-teal-dark); }
+.qit-portal .dir-search-count { position: absolute; right: 44px; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); }
+.qit-portal .dept-tag { padding: 4px 10px; border-radius: 999px; font-size: 0.74rem; font-weight: 800; border: 1px solid; white-space: nowrap; }
+.qit-portal .dept-tag.bn { background: #ecfdf5; color: #047857; border-color: #6ee7b7; }
+.qit-portal .dept-tag.en { background: #eff6ff; color: #1d4ed8; border-color: #93c5fd; }
+.qit-portal .dept-tag.empty { background: #fff; color: var(--text-muted); border-color: var(--c-box-border); border-style: dashed; font-weight: 700; }
+.qit-portal .card-right { display: flex; align-items: center; gap: 24px; margin-left: auto; }
+.qit-portal .card-right .btn-icon-edit { flex-shrink: 0; }
+.qit-portal .payout-field { display: flex; flex-direction: column; gap: 3px; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); }
+.qit-portal .payout-bar .qcb > input { padding: 8px 28px 8px 10px; border: 1.5px solid var(--c-box-border); background: #fff; font-size: 0.86rem; }
+
+/* ---------- Several WhatsApp numbers ---------- */
+.qit-portal .phone-list, .qit-portal-modal .phone-list { display: flex; flex-direction: column; gap: 6px; }
+.qit-portal .phone-row { position: relative; display: flex; align-items: center; }
+.qit-portal .phone-row .m-input { padding-right: 34px; }
+.qit-portal .phone-remove { position: absolute; right: 8px; display: flex; padding: 4px; border-radius: 6px; color: #b91c1c; }
+.qit-portal .phone-remove:hover { background: #fef2f2; }
+.qit-portal .phone-add { align-self: flex-start; display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 800; color: var(--c-teal-mid); padding: 2px 4px; border-radius: 6px; }
+.qit-portal .phone-add:hover { background: var(--c-box-bg); }
+.qit-portal .phone-list.compact { min-width: 190px; }
+
+/* ---------- Student roster search (icon no longer covers the text) ---------- */
+.qit-portal .roster-search { position: relative; display: block; }
+.qit-portal .roster-search .m-input { width: 16rem; padding-left: 38px; }
+.qit-portal .roster-search svg { position: absolute; left: 12px; top: 50%; width: 16px; height: 16px; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+.qit-portal .level-chip { margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; }
+.qit-portal .level-chip.excellent, .qit-portal .level-chip.veryGood { background: #dcfce7; color: #166534; }
+.qit-portal .level-chip.good { background: #e0f2fe; color: #075985; }
+.qit-portal .level-chip.average { background: #fef3c7; color: #92400e; }
+.qit-portal .level-chip.weak { background: #fee2e2; color: #991b1b; }
+
+/* ---------- Portal Contents ---------- */
+.qit-portal .pc-group { border: 1.5px solid var(--c-box-border); border-radius: 12px; padding: 14px 18px 4px; margin-bottom: 16px; background: #fbfdfd; }
+.qit-portal .pc-group legend { padding: 0 8px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--c-teal-dark); }
+.qit-portal .pc-reset { display: inline-flex; align-items: center; gap: 3px; font-size: 0.68rem; font-weight: 800; color: #b45309; text-transform: none; letter-spacing: 0; }
+.qit-portal .pc-reset:hover { text-decoration: underline; }
+.qit-portal .pc-unsaved { font-size: 0.75rem; font-weight: 800; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; padding: 4px 10px; border-radius: 999px; }
+.qit-portal .pc-check { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--c-box-border); border-radius: 8px; background: #fff; font-size: 0.88rem; font-weight: 700; cursor: pointer; }
+.qit-portal .pc-check input { width: 16px; height: 16px; accent-color: #004d51; }
+
+/* ---------- Salary certificate dialog ---------- */
+.qit-portal .cert-layout { display: grid; grid-template-columns: minmax(290px, 340px) 1fr; gap: 20px; align-items: start; }
+.qit-portal .cert-form { max-height: 76vh; overflow-y: auto; padding-right: 6px; }
+.qit-portal .cert-label { display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--c-teal-dark); margin-bottom: 4px; }
+.qit-portal .cert-label em { font-style: normal; color: #b45309; text-transform: none; }
+.qit-portal .cert-error { display: block; margin-top: 4px; font-size: 0.78rem; font-weight: 700; color: #b91c1c; }
+.qit-portal .m-input.is-error { border-color: #dc2626; }
+.qit-portal .cert-sub { display: flex; align-items: center; justify-content: space-between; margin: 14px 0 8px; padding-top: 12px; border-top: 1.5px solid var(--c-box-border); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--c-teal-dark); }
+.qit-portal .cert-row { display: flex; gap: 8px; margin-bottom: 6px; }
+.qit-portal .cert-total { font-size: 0.8rem; font-weight: 800; color: #0f766e; margin: 4px 0 2px; }
+.qit-portal .cert-total.bad { color: #b91c1c; }
+.qit-portal .cert-preview { background: #e6eeee; border-radius: 12px; padding: 14px; overflow: auto; max-height: 76vh; }
+.qit-portal .cert-preview .qit-cert { zoom: 0.72; }
+@media (max-width: 900px) {
+  .qit-portal .cert-layout { grid-template-columns: 1fr; }
+  .qit-portal .cert-form, .qit-portal .cert-preview { max-height: none; }
+  .qit-portal .cert-preview .qit-cert { zoom: 0.42; }
+}
+.qit-portal .cert-hint { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin: -2px 0 8px; }
