@@ -1,0 +1,9 @@
+# v157: database calls through this website's own address, for networks that
+# block *.supabase.co (Netlify forwards them to the Supabase project)
+/sbapi/*  https://jigbsunxutjgxxehjeuy.supabase.co/:splat  200!
+# v163: the admin panel and the Teacher Dashboard have their own page (own home-screen app details)
+/admin        /admin.html     200
+/admin/*      /admin.html     200
+/teacher      /teacher.html   200
+/teacher/*    /teacher.html   200
+/*    /index.html   200
